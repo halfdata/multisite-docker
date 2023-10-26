@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  website:
+    build: ./website
+    environment:
+      - VIRTUAL_HOST=domain3.tld
+      - LETSENCRYPT_HOST=domain3.tld
+    restart: unless-stopped
+
+networks:
+  default:
+    name: nginx-proxy-network
+    external: true
